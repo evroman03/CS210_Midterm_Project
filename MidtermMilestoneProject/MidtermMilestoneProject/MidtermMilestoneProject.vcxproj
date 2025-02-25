@@ -129,6 +129,9 @@
   <ItemGroup>
     <ClCompile Include="CSVReader.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SchoolReader.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
