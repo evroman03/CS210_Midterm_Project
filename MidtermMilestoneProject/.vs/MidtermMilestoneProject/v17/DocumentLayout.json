@@ -1,12 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\elija\\source\\repos\\MidtermMilestoneProject\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\elija\\source\\repos\\MidtermProjectFiles\\CS210_Midterm_Project\\MidtermMilestoneProject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D57DF66B-5A32-49A9-BF38-2AA21044CA9F}|MidtermMilestoneProject\\MidtermMilestoneProject.vcxproj|C:\\Users\\elija\\source\\repos\\MidtermProjectFiles\\CS210_Midterm_Project\\MidtermMilestoneProject\\MidtermMilestoneProject\\CSVReader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D57DF66B-5A32-49A9-BF38-2AA21044CA9F}|MidtermMilestoneProject\\MidtermMilestoneProject.vcxproj|solutionrelative:MidtermMilestoneProject\\CSVReader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CSVReader.cpp",
+              "DocumentMoniker": "C:\\Users\\elija\\source\\repos\\MidtermProjectFiles\\CS210_Midterm_Project\\MidtermMilestoneProject\\MidtermMilestoneProject\\CSVReader.cpp",
+              "RelativeDocumentMoniker": "MidtermMilestoneProject\\CSVReader.cpp",
+              "ToolTip": "C:\\Users\\elija\\source\\repos\\MidtermProjectFiles\\CS210_Midterm_Project\\MidtermMilestoneProject\\MidtermMilestoneProject\\CSVReader.cpp",
+              "RelativeToolTip": "MidtermMilestoneProject\\CSVReader.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-25T16:24:48.732Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
