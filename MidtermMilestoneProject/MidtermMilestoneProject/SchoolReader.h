@@ -14,8 +14,10 @@ struct SchoolNode
 
 	SchoolNode* next;
 
-	SchoolNode(std::string n, std::string a, std::string c, std::string s, std::string co)
-		: name(n), address(a), city(c), state(s), county(co), next(nullptr) {} //Referenced this declaration from BST.h earlier this semester
+	//.h file declares the structure of schoolnode and the class (SchoolList) and can outline the available fxs.
+	SchoolNode(std::string n, std::string a, std::string c, std::string s, std::string co);
+	//The .cpp file implements those functions.
+		//: name(n), address(a), city(c), state(s), county(co), next(nullptr) {} //Referenced this declaration from BST.h earlier this semester
 };
 
 class SchoolList {
@@ -23,9 +25,9 @@ private:
 	SchoolNode* head;
 
 public:
-	SchoolList() : head(nullptr) {} ;
-	void insertFirst(std::string name, std::string address, std::string city, std::string state, std::string county);
-	void insertLast(std::string name, std::string address, std::string city, std::string state, std::string county);
+	SchoolList();// : head(nullptr) {}; ... For future reference and my readability im moving definition to cpp
+	void insertFirst(SchoolNode school);
+	void insertLast(SchoolNode school);
 	void deleteByName(std::string name);
 	SchoolNode* findByName(std::string name);
 	void display();
