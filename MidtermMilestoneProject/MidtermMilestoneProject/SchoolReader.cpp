@@ -108,6 +108,7 @@ bool SchoolList::deleteByName(string name)
         delete toDelete;
         return true;
     }
+    return false;
 }
 
 void SchoolList::display()
