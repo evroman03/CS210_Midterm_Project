@@ -84,20 +84,30 @@ SchoolNode* SchoolList::findByName(string name)
 bool SchoolList::deleteByName(string name)
 {
     SchoolNode* temp = head; // reminder, temp is a pointer to the actual node
-    while (temp != nullptr)
+    if (head == nullptr) //nothing in the list
     {
-        if (temp->next->name == name)//if the next node's next matches, we found it
-        {
-            temp->next = temp->next->next; //set this node's next to skip the next node by going to
-                                           //the next's next
-            delete temp->next;  
-            return true;
-        }
-        //if we didnt find it, move to the next node
+        return false;
+    }
+    if (head->name == name) //if the head is the very thing we want, delete it and move its next
+    {
+        SchoolNode* temp2 = head;
+        head = head->next;
+        delete temp2;
+        return true;
+    }
+   
+    while (temp->next != nullptr && temp->next->name != name)
+    {
         temp = temp->next;
     }
-    //We didnt find it at all, so delete was unsuccessful
-    return false;
+
+    if (temp->next != nullptr) //we looped and found the node and double checked its not null
+    {
+        SchoolNode* toDelete = temp->next;
+        temp->next = temp->next->next;
+        delete toDelete;
+        return true;
+    }
 }
 
 void SchoolList::display()
