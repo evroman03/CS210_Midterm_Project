@@ -100,4 +100,18 @@ bool SchoolList::deleteByName(string name)
     return false;
 }
 
+void SchoolList::display()
+{
+    SchoolNode* temp = head; // reminder, temp is a pointer to the actual node
+
+    while (temp != nullptr) 
+    {
+        cout << "Name: " << temp->name << ", Address: " << temp->address
+            << ", City: " << temp->city << ", State: " << temp->state
+            << ", County: " << temp->county << endl;
+
+        temp = temp->next;
+    }
+}
+
 

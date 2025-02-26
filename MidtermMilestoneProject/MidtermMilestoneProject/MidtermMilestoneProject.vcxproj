@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="CSVReader.cpp" />
     <ClCompile Include="SchoolReader.cpp" />
+    <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SchoolReader.h" />
