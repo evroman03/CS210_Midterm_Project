@@ -15,11 +15,15 @@ void loadCSV(BinarySearchTree<SchoolData>& schoolTree, vector<vector<string>>& s
 
     if (schoolList.empty()) 
     {
-        cout << "Error: CSV file could not be read or is empty.\n";
+        cout << "Error: CSV file could not be read or is empty. Did you forget to include the file extension?\n";
         isFileLoaded = false;
         return;
     }
-
+    if (isFileLoaded)
+    {
+        schoolTree.clear();
+        cout << "\n Previous file cleared. Starting to load new file... \n";
+    }
     for (const auto& row : schoolList) {
         if (row.size() < 5) {
             cerr << "Skipping invalid row\n";
@@ -60,89 +64,93 @@ int main()
 
         switch (choice)
         {
-        case 1:
-            cout << "Enter CSV filename: ";
-            getline(cin, filename);
-            loadCSV(schoolTree, schoolList, filename, isFileLoaded);
-            break;
+            case 1:
+                cout << "Enter CSV filename: ";
+                getline(cin, filename);
+                loadCSV(schoolTree, schoolList, filename, isFileLoaded);
+                break;
 
-        case 2:
-            if (!isFileLoaded)
-            {
-                cout << "Error: No CSV file loaded. Please load a file first.\n";
-            }
-            cout << "Enter school name to search: ";
-            getline(cin, name);
-
-            {
-                SchoolData searchKey(name, "", "", "", "");  // Only name matters for searching
-                const SchoolData* found = schoolTree.bstSearch(searchKey);
-
-                if (found != nullptr) 
+            case 2:
+                if (!isFileLoaded)
                 {
-                    cout << "\nSchool Found:\n" << *found << endl;
+                    cout << "Error: No CSV file loaded. Please load a file first.\n";
+                    break;
                 }
-                else 
+                cout << "Enter school name to search: ";
+                getline(cin, name);
+
                 {
-                    cout << "School not found.\n";
+                    SchoolData searchKey(name, "", "", "", "");  // Only name matters for searching
+                    const SchoolData* found = schoolTree.bstSearch(searchKey);
+
+                    if (found != nullptr) 
+                    {
+                        cout << "\nSchool Found:\n" << *found << endl;
+                    }
+                    else 
+                    {
+                        cout << "School not found.\n";
+                    }
                 }
-            }
-            break;
+                break;
 
-        case 3:
-            if (!isFileLoaded)
-            {
-                cout << "Error: No CSV file loaded. Please load a file first.\n";
-            }
-            cout << "Enter school name to delete: ";
-            getline(cin, name);
-
-            {
-                SchoolData deleteKey(name, "", "", "", "");  // Only name matters for deletion
-                bool deleted = schoolTree.bstDeleteNode(deleteKey);
-
-                if (deleted) {
-                    cout << "School " << name << " was deleted!\n";
+            case 3:
+                if (!isFileLoaded)
+                {
+                    cout << "Error: No CSV file loaded. Please load a file first.\n";
+                    break;
                 }
-                else {
-                    cout << "School " << name << " does not exist!\n";
+                cout << "Enter school name to delete: ";
+                getline(cin, name);
+
+                {
+                    SchoolData deleteKey(name, "", "", "", "");  // Only name matters for deletion
+                    bool deleted = schoolTree.bstDeleteNode(deleteKey);
+
+                    if (deleted) {
+                        cout << "School " << name << " was deleted!\n";
+                    }
+                    else {
+                        cout << "School " << name << " does not exist!\n";
+                    }
                 }
-            }
-            break;
+                break;
 
-        case 4:
-            if (!isFileLoaded)
-            {
-                cout << "Error: No CSV file loaded. Please load a file first.\n";
-            }
-            cout << "\n===== School List =====\n";
-            schoolTree.bstInorder();
-            break;
-        case 5:
-            if (!isFileLoaded)
-            {
-                cout << "Error: No CSV file loaded. Please load a file first.\n";
-            }
-            cout << "\n===== School List =====\n";
-            schoolTree.bstPreorder();
-            break;
-        case 6:
-            if (!isFileLoaded)
-            {
-                cout << "Error: No CSV file loaded. Please load a file first.\n";
-            }
-            cout << "\n===== School List =====\n";
-            schoolTree.bstPostorder();
-            break;
+            case 4:
+                if (!isFileLoaded)
+                {
+                    cout << "Error: No CSV file loaded. Please load a file first.\n";
+                    break;
+                }
+                cout << "\n===== School List =====\n";
+                schoolTree.bstInorder();
+                break;
+            case 5:
+                if (!isFileLoaded)
+                {
+                    cout << "Error: No CSV file loaded. Please load a file first.\n";
+                    break;
+                }
+                cout << "\n===== School List =====\n";
+                schoolTree.bstPreorder();
+                break;
+            case 6:
+                if (!isFileLoaded)
+                {
+                    cout << "Error: No CSV file loaded. Please load a file first.\n";
+                    break;
+                }
+                cout << "\n===== School List =====\n";
+                schoolTree.bstPostorder();
+                break;
 
-        case 7:
-            cout << "Exiting program...\n";
-            return 0;
+            case 7:
+                cout << "Exiting program...\n";
+                return 0;
 
-        default:
-            cout << "Invalid choice. Please try again.\n";
+            default:
+                cout << "Invalid choice. Please try again.\n";
         }
     }
-
     return 0;
 }

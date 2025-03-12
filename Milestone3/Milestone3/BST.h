@@ -175,6 +175,7 @@ private:
         delete node;
     }
 
+
 public:
     BinarySearchTree() : root(nullptr) {}
     ~BinarySearchTree() { destroy(root); }
@@ -185,5 +186,10 @@ public:
     void bstPreorder() const { preorder(root); }
     void bstPostorder() const { postorder(root); }
     bool bstDeleteNode(const T& value) { return deleteNode(root, value); }
+    void clear()
+    {
+        destroy(root);
+        root = nullptr;
+    }
 };
 #endif
