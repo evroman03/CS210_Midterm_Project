@@ -11,10 +11,12 @@ int main()
     SchoolData newSchool2("D_Green Valley High", "123 Main St", "Green Valley", "StateX", "CountyY");
     SchoolData newSchool3("C_Green Valley High", "123 Main St", "Green Valley", "StateX", "CountyY");
 
-    //// Insert into the tree
+    // Insert into the tree
     schoolTree.bstInsert(newSchool);
     schoolTree.bstInsert(newSchool2);
     schoolTree.bstInsert(newSchool3);
+
+
 
     schoolTree.bstInorder();
 
