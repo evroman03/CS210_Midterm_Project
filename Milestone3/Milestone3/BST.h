@@ -72,7 +72,98 @@ private:
         std::cout << node->data << " ";
         inorder(node->right);
     }
+    void preorder(Node* node) const
+    {
+        if (node == nullptr)
+        {
+            return;
+        }
 
+        std::cout << node->data << " ";
+        preorder(node->left);
+        preorder(node->right);
+    }
+    void postorder(Node* node) const
+    {
+        if (node == nullptr)
+        {
+            return;
+        }
+        postorder(node->left);
+        postorder(node->right);
+        std::cout << node->data << " ";
+    }
+
+    /// <summary>
+    /// Recursively dig to find smallest node by visiting left
+    /// Could put this into remove but seperated for visibility
+    /// </summary>
+    /// <param name="node"></param>
+    /// <returns></returns>
+    Node* findMin(Node* node)
+    {
+        while (node != nullptr && node->left != nullptr)
+        {
+            node = node->left;
+        }
+        return node;
+    }
+
+    bool deleteNode(Node*& node, const T& value)
+    {
+        //Base case, the if else below will return
+        //this and recurse upwards with it if the 
+        //searching didnt find a value that == it
+        if (node == nullptr)
+        {
+            return false;
+        }
+
+        if (value < node->data)
+        {
+            return deleteNode(node->left, value);
+        }
+        else if (value > node->data)
+        {
+            return deleteNode(node->right, value);
+        }
+
+
+        // after searching for the node if not > or <, must be ==
+        else
+        {
+            //empty left
+            if (node->left == nullptr)
+            {
+                Node* temp = node->right;
+                delete node;
+                node = temp;
+            }
+            //empty right
+            else if (node->right == nullptr)
+            {
+                Node* temp = node->left;
+                delete node;
+                node = temp;
+            }
+            else
+            {
+                //look for the smallest node in the RIGHT subtree to replace the 
+                //deleted node, since all nodes in the LEFT subtree will still 
+                //be smaller to it and all nodes in the new RIGHT tree will be 
+                //larger than the replacement
+                Node* minRight = findMin(node->right);
+                node->data = minRight->data;
+                return deleteNode(node->right, minRight->data);
+            }
+            return true;
+        }
+    }
+
+    /// <summary>
+    /// Destructor
+    /// </summary>
+    /// <param name="node"></param>
     void destroy(Node* node)
     {
         if (node == nullptr)
@@ -91,5 +182,8 @@ public:
     void bstInsert(const T& value) { insert(root, value); }
     const T* bstSearch(const T& value) const { return search(root, value); }
     void bstInorder() const { inorder(root); }
+    void bstPreorder() const { preorder(root); }
+    void bstPostorder() const { postorder(root); }
+    bool bstDeleteNode(const T& value) { return deleteNode(root, value); }
 };
 #endif
