@@ -18,6 +18,7 @@ void loadCSV(SchoolHashTable& schoolHasher, vector<vector<string>>& schoolList, 
     if (schoolList.empty())
     {
         cout << "Error: CSV file could not be read or is empty. Did you forget to include the file extension?\n";
+        //Dont forget to include the file extension, idiot
         isFileLoaded = false;
         return;
     }
