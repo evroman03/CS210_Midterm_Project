@@ -26,5 +26,8 @@
     <ClInclude Include="SchoolHashTable.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="SchoolData.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
