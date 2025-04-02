@@ -35,6 +35,13 @@ public:
         int index = hashFunction(school.name);
         table[index].push_back(school);
     }
+
+    /// <summary>
+    /// these turned out really similar to find so ill figure out something later
+    /// to combine these two.
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
     bool deleteByName(const string& name)
     {
         int index = hashFunction(name);
@@ -52,6 +59,21 @@ public:
             }
         }
         return false;
+    }
+    SchoolData* findByName(const string& name)
+    {
+        int index = hashFunction(name);
+        //after getting the index recieved from hashing, we can just search the list at that index
+        //and return a ref to the school itself
+        auto& chain = table[index];
+        for (auto& school : chain) 
+        {
+            if (school.name == name) 
+            {
+                return &school;
+            }
+        }
+        return nullptr;
     }
 };
 
