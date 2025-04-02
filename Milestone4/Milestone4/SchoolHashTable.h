@@ -26,6 +26,22 @@ private:
         return hash % tableSize;
     }
 
+    void rehash()
+    {
+        int newTableSize = tableSize * 2;
+        vector<list<SchoolData>> newTable(newTableSize);
+
+        for (const auto& chain : table)
+        {
+            for (const auto& school : chain) {
+                int newIndex = hashFunction(school.name) % newTableSize;
+                newTable[newIndex].push_back(school);
+            }
+        }
+
+        table = move(newTable);
+        tableSize = newTableSize;
+    }
    
 
 public:
@@ -37,11 +53,9 @@ public:
         //i think the internet collectively decided to rehash at .7 for...reasons (probably math)
         if (elementsInTable > tableSize * 0.7f)
         {
-            for (auto& school : table)
-            {
-                tableSize = tableSize *= 2;
-            }
+            rehash();
         }
+        elementsInTable++;
         int index = hashFunction(school.name);
         table[index].push_back(school);
     }
