@@ -17,6 +17,11 @@ private:
     vector<list<SchoolData>> table;
     int elementsInTable;
 
+    /// <summary>
+    /// provided
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
     int hashFunction(const string& name) 
     {
         int hash = 0;
@@ -33,12 +38,16 @@ private:
 
         for (const auto& chain : table)
         {
-            for (const auto& school : chain) {
+            for (const auto& school : chain) 
+            {
+                //reindexing everything to the newtable by mapping with the new size
                 int newIndex = hashFunction(school.name) % newTableSize;
                 newTable[newIndex].push_back(school);
             }
         }
 
+        //Move is great. this will transfer the contents of newTable to the 
+        // table member variable without copying anything
         table = move(newTable);
         tableSize = newTableSize;
     }
@@ -98,6 +107,19 @@ public:
             }
         }
         return nullptr;
+    }
+
+    void display() 
+    {
+        //nested for loop to cover all entries of lists of indexes
+        for (int i = 0; i <= tableSize; i++)
+        {
+            cout << "Index " << i << ": ";
+            for (const auto& school : table[i])
+            {
+                cout << school << " -> ";
+            }
+        }
     }
 };
 
