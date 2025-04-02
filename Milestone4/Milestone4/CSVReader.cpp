@@ -6,7 +6,8 @@ using namespace std;
 
 class CSVReader {
 public:
-    static vector<vector<string>> readCSV(const string& filename) {
+    static vector<vector<string>> readCSV(const string& filename) 
+    {
         ifstream file(filename);
         vector<vector<string>> data;
         string line, word;

@@ -12,6 +12,7 @@ using namespace std;
 //void loadCSV(BinarySearchTree<SchoolData>& schoolTree, vector<vector<string>>& schoolList, const string& filename, bool& isFileLoaded)
 void loadCSV(SchoolHashTable& schoolHasher, vector<vector<string>>& schoolList, const string& filename, bool& isFileLoaded)
 {
+    cout << filename << endl;
     schoolList = CSVReader::readCSV(filename);
 
     if (schoolList.empty())
