@@ -15,6 +15,7 @@ class SchoolHashTable
 private:
     int tableSize;
     vector<list<SchoolData>> table;
+    int elementsInTable;
 
     int hashFunction(const string& name) 
     {
@@ -28,10 +29,19 @@ private:
    
 
 public:
-    SchoolHashTable(int size = 10) : tableSize(size), table(size) {}
+    //Constructor
+    SchoolHashTable(int size = 10) : tableSize(size), table(size), elementsInTable(0) {}
 
     void insert(const SchoolData& school) 
     {
+        //i think the internet collectively decided to rehash at .7 for...reasons (probably math)
+        if (elementsInTable > tableSize * 0.7f)
+        {
+            for (auto& school : table)
+            {
+                tableSize = tableSize *= 2;
+            }
+        }
         int index = hashFunction(school.name);
         table[index].push_back(school);
     }
