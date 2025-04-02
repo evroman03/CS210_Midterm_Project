@@ -112,13 +112,14 @@ public:
     void display() 
     {
         //nested for loop to cover all entries of lists of indexes
-        for (int i = 0; i <= tableSize; i++)
+        for (int i = 0; i < tableSize; i++)
         {
             cout << "Index " << i << ": ";
             for (const auto& school : table[i])
             {
                 cout << school << " -> ";
             }
+            cout << "NULL" << endl;
         }
     }
 };
