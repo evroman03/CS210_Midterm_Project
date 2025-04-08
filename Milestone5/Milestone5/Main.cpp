@@ -12,7 +12,7 @@
 using namespace std;
 
 int main() {
-    const string filename = "Illinois_Peoria_Schools.csv";
+    const string filename = "Illinois_Schools.csv";
     vector<vector<string>> csvData = CSVReader::readCSV(filename);
     vector<SchoolData> allSchools;
 
@@ -23,7 +23,7 @@ int main() {
         }
     }
 
-    const size_t testInterval = 5; // Change this to control testing frequency
+    const size_t testInterval = 300; // Change this to control testing frequency
 
     std::random_device rd;
     std::mt19937 g(rd());
@@ -33,7 +33,7 @@ int main() {
     BinarySearchTree<SchoolData> schoolBST;
     SchoolHashTable schoolHash(10007);
 
-    ofstream output("IPSTimings1.csv");
+    ofstream output("ISTimings1.csv");
     output << "Structure,Operation,Index,TimeMicroseconds\n";
 
     std::uniform_int_distribution<size_t> dist(0, allSchools.size() - 1);
